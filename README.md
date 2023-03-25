@@ -1,3 +1,19 @@
+# Added by kippmorris7
+
+Welcome to my fork of Kubernetes the Hard Way! I wanted to learn about Azure and Kubernetes at the same time, so I adapted the tutorial to Azure as I went and wrote an ARM template to deploy all of the Azure resources needed for the cluster. You can find the template in the `arm-templates` directory.
+
+Features of the template:
+
+- It deploys all of the resources you will need from all parts of the tutorial at once, not just the compute resources from step 3. This includes the load balancer, etc.
+- It is parameterized to allow you to pass your personal machine's IP address so that your cluster will be accessible only from your machine and not from the whole Internet. The other parameter in addition to your personal IP is your public SSH key.
+- It includes a network security group with rules to ensure your cluster is only accessible from your personal IP, as explained in the previous step.
+
+Note that many of the commands included in the tutorial steps still need to be adapted to Azure. I didn't bother with updating the few commands that need to be run manually as part of the cluster bootstrapping process.
+
+Also note that using the VM size I put in the ARM template will require two quota increases in a new Azure account (or at least it did for my Azure account): one to increase total regional vCPUs to 12 and one to increase BS series vCPUs to 12.
+
+---
+
 # Kubernetes The Hard Way
 
 This tutorial walks you through setting up Kubernetes the hard way. This guide is not for people looking for a fully automated command to bring up a Kubernetes cluster. If that's you then check out [Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine), or the [Getting Started Guides](https://kubernetes.io/docs/setup).
